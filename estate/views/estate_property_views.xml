@@ -24,6 +24,9 @@
                 <field name="selling_price"/>
                 <field name="date_availability" string="Available From"/>
                 <field name="state"/>
+                <field name="type"/>
+                <field name="salesman"/>
+                <field name="buyer"/>
             </tree>
         </field>
     </record>
@@ -38,13 +41,17 @@
                             <field name="name" class="mb16"/>
                         </h1>
                     </div>
+                    <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
+                            <field name="type"/>
                             <field name="postcode"/>
                             <field name="date_availability" string="Available From"/>
                         </group>
                         <group>
                             <field name="expected_price"/>
+                            <separator/>
+                            <field name="best_price"/>
                             <field name="selling_price"/>
                         </group>
                         <notebook>
@@ -59,6 +66,37 @@
                                     <field name="garden_area" string="Garden Area (sqm)"/>
                                     <field name="garden_orientation"/>
                                     <field name="state"/>
+                                    <field name="total_area"/>
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                    <field name="offer_ids" mode="tree,form">
+
+                                        <tree>
+                                            <field name="price"/>
+                                            <field name="partner_id"/>
+                                            <field name="status"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="price"/>
+                                                <field name="partner_id"/>
+                                                <field name="status"/>
+
+                                            </group>
+                                        </form>
+<!--                                <field name="offer_ids">-->
+<!--                                    <tree>-->
+<!--                                        <field name="price"/>-->
+<!--                                        <field name="partner_id"/>-->
+<!--                                        <field name="status"/>-->
+<!--                                    </tree>-->
+                                    </field>
+                            </page>
+                            <page string="Other info">
+                                <group>
+                                    <field name="salesman"/>
+                                    <field name="buyer"/>
                                 </group>
                             </page>
                         </notebook>
@@ -78,6 +116,10 @@
                 <field name="bedrooms"/>
                 <field name="living_area" string="Living Area (sqm)"/>
                 <field name="facades"/>
+                <field name="type"/>
+                <field name="tag_ids"/>
+                <field name="salesman"/>
+                <field name="buyer"/>
                 <separator/>
                 <filter string="Available Properties"
                         name="available_properties"
